@@ -988,6 +988,144 @@ ul  { list-style: none; }
 }
 
 /* ============================================================
+   BOTÕES VITRINE
+   ============================================================ */
+
+/* ── Header ── */
+.btn-vitrine-header {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: var(--dourado);
+  color: var(--branco) !important;
+  border-radius: 50px;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  transition: var(--transition);
+  box-shadow: var(--shadow-dourado);
+}
+.btn-vitrine-header::after { display: none !important; }
+.btn-vitrine-header:hover {
+  background: var(--dourado-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201,163,101,.5);
+}
+
+/* ── Nav mobile ── */
+.nav-vitrine { color: var(--dourado-dark) !important; font-weight: 700 !important; }
+.nav-vitrine i { margin-right: 4px; }
+
+/* ── Hero ── */
+.btn-vitrine-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--dourado);
+  color: var(--branco);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: .95rem;
+  border-radius: 50px;
+  box-shadow: var(--shadow-dourado);
+  transition: var(--transition);
+}
+.btn-vitrine-hero:hover {
+  background: var(--dourado-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201,163,101,.5);
+}
+
+/* ── Banner na seção Produtos ── */
+.vitrine-banner {
+  margin-top: 40px;
+  background: linear-gradient(135deg, var(--marinho) 0%, #2D4090 100%);
+  border-radius: var(--radius-lg);
+  padding: 36px 44px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+.vitrine-banner::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(201,163,101,.12);
+  pointer-events: none;
+}
+.vitrine-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: 40px;
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: rgba(232,180,200,.1);
+  pointer-events: none;
+}
+.vitrine-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  position: relative;
+  z-index: 1;
+}
+.vitrine-banner-icon {
+  flex-shrink: 0;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.1);
+  border: 2px solid rgba(201,163,101,.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+  color: var(--dourado);
+}
+.vitrine-banner-text { flex: 1; }
+.vitrine-banner-text h3 {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--branco);
+  margin-bottom: 6px;
+}
+.vitrine-banner-text p {
+  color: rgba(255,255,255,.68);
+  font-size: .95rem;
+  line-height: 1.5;
+}
+.btn-vitrine-banner {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 30px;
+  background: var(--dourado);
+  color: var(--branco);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: .95rem;
+  border-radius: 50px;
+  white-space: nowrap;
+  box-shadow: var(--shadow-dourado);
+  transition: var(--transition);
+}
+.btn-vitrine-banner:hover {
+  background: var(--dourado-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201,163,101,.5);
+}
+
+@media (max-width: 768px) {
+  .vitrine-banner { padding: 28px 24px; }
+  .vitrine-banner-content { flex-direction: column; text-align: center; gap: 20px; }
+  .vitrine-banner-icon { width: 60px; height: 60px; font-size: 1.5rem; }
+  .btn-vitrine-banner { width: 100%; justify-content: center; }
+}
+
+/* ============================================================
    BOTÃO FLUTUANTE WHATSAPP
    ============================================================ */
 .wpp-float {
