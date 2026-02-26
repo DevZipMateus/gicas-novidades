@@ -40,19 +40,7 @@ depoimentosImgs.forEach((src, i) => {
   depTrack.appendChild(item);
 });
 
-/* Scroll suave ao clicar nos botões */
-function getScrollAmount() {
-  const item = depTrack.querySelector('.dep-item');
-  return item ? item.offsetWidth + 16 : 240;
-}
-
-depPrev.addEventListener('click', () => {
-  depOuter.scrollBy({ left: -getScrollAmount() * 3, behavior: 'smooth' });
-});
-
-depNext.addEventListener('click', () => {
-  depOuter.scrollBy({ left: getScrollAmount() * 3, behavior: 'smooth' });
-});
+/* Scroll por índice — os listeners dos botões estão na seção de auto-avanço */
 
 /* Arrastar para scroll no desktop */
 let isDown = false, startX, scrollLeft;
@@ -73,6 +61,105 @@ depOuter.addEventListener('mousemove', e => {
   const x    = e.pageX - depOuter.offsetLeft;
   const walk = (x - startX) * 1.4;
   depOuter.scrollLeft = scrollLeft - walk;
+});
+
+/* ── AUTO-AVANÇO DO CARROSSEL (3 segundos) ──────────────── */
+let currentDepIndex = 0;
+let autoAdvanceTimer = null;
+
+function getDepItems() {
+  return depTrack.querySelectorAll('.dep-item');
+}
+
+function scrollToIndex(idx) {
+  const items = getDepItems();
+  if (!items[idx]) return;
+  depOuter.scrollTo({ left: items[idx].offsetLeft - 4, behavior: 'smooth' });
+}
+
+function startAutoAdvance() {
+  stopAutoAdvance();
+  autoAdvanceTimer = setInterval(() => {
+    const items = getDepItems();
+    currentDepIndex = (currentDepIndex + 1) % items.length;
+    scrollToIndex(currentDepIndex);
+  }, 3000);
+}
+
+function stopAutoAdvance() {
+  if (autoAdvanceTimer) { clearInterval(autoAdvanceTimer); autoAdvanceTimer = null; }
+}
+
+startAutoAdvance();
+
+/* Pausa no hover e retoma ao sair */
+depOuter.addEventListener('mouseenter', stopAutoAdvance);
+depOuter.addEventListener('mouseleave', startAutoAdvance);
+
+/* Pausa no toque e retoma ao soltar */
+depOuter.addEventListener('touchstart', stopAutoAdvance, { passive: true });
+depOuter.addEventListener('touchend', () => {
+  setTimeout(startAutoAdvance, 2000);
+}, { passive: true });
+
+/* Sincroniza índice ao scrollar manualmente */
+depOuter.addEventListener('scroll', () => {
+  const items = getDepItems();
+  let closestIdx = 0, closestDiff = Infinity;
+  items.forEach((item, idx) => {
+    const diff = Math.abs(item.offsetLeft - depOuter.scrollLeft);
+    if (diff < closestDiff) { closestDiff = diff; closestIdx = idx; }
+  });
+  currentDepIndex = closestIdx;
+}, { passive: true });
+
+/* Atualiza índice ao usar os botões */
+depPrev.addEventListener('click', () => {
+  const items = getDepItems();
+  currentDepIndex = Math.max(0, currentDepIndex - 1);
+  scrollToIndex(currentDepIndex);
+});
+
+depNext.addEventListener('click', () => {
+  const items = getDepItems();
+  currentDepIndex = Math.min(items.length - 1, currentDepIndex + 1);
+  scrollToIndex(currentDepIndex);
+});
+
+/* ── LIGHTBOX ─────────────────────────────────────────────── */
+const lightbox      = document.getElementById('lightbox');
+const lightboxImg   = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+const lightboxOverlay = document.getElementById('lightboxOverlay');
+
+function openLightbox(src, alt) {
+  lightboxImg.src = src;
+  lightboxImg.alt = alt;
+  lightbox.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  stopAutoAdvance();
+}
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+  startAutoAdvance();
+}
+
+/* Clique em qualquer imagem do carrossel abre o lightbox */
+depTrack.addEventListener('click', e => {
+  if (isDown) return; /* ignora se estava arrastando */
+  const item = e.target.closest('.dep-item');
+  if (!item) return;
+  const img = item.querySelector('img');
+  if (img) openLightbox(img.src, img.alt);
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxOverlay.addEventListener('click', closeLightbox);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
 });
 
 /* ── HEADER SCROLL ──────────────────────────────────────── */

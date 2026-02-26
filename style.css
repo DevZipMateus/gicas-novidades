@@ -442,7 +442,12 @@ ul  { list-style: none; }
 /* ============================================================
    SOBRE
    ============================================================ */
-.sobre { background: var(--branco); }
+.sobre {
+  background:
+    linear-gradient(rgba(253,248,245,0.88), rgba(253,248,245,0.88)),
+    url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80') center / cover no-repeat;
+  background-attachment: fixed, fixed;
+}
 
 .sobre-grid {
   display: grid;
@@ -541,7 +546,12 @@ ul  { list-style: none; }
 /* ============================================================
    PRODUTOS
    ============================================================ */
-.produtos { background: var(--fundo); }
+.produtos {
+  background:
+    linear-gradient(rgba(253,248,245,0.88), rgba(253,248,245,0.88)),
+    url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1920&q=80') center / cover no-repeat;
+  background-attachment: fixed, fixed;
+}
 
 .produtos-grid {
   display: grid;
@@ -641,7 +651,10 @@ ul  { list-style: none; }
    VALORES
    ============================================================ */
 .valores {
-  background: linear-gradient(135deg, var(--marinho) 0%, #26387A 60%, #1E3060 100%);
+  background:
+    linear-gradient(135deg, rgba(28,43,94,0.90) 0%, rgba(38,56,122,0.90) 60%, rgba(30,48,96,0.90) 100%),
+    url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1920&q=80') center / cover no-repeat;
+  background-attachment: fixed, fixed;
   position: relative;
   text-align: center;
 }
@@ -733,7 +746,12 @@ ul  { list-style: none; }
 /* ============================================================
    DEPOIMENTOS
    ============================================================ */
-.depoimentos { background: var(--rosa-light); }
+.depoimentos {
+  background:
+    linear-gradient(rgba(254,240,245,0.87), rgba(254,240,245,0.87)),
+    url('https://images.unsplash.com/photo-1490750967868-88df5691cc26?w=1920&q=80') center / cover no-repeat;
+  background-attachment: fixed, fixed;
+}
 .depoimentos .section-title em { color: var(--rosa-dark); }
 
 .dep-carousel-wrapper {
@@ -760,6 +778,7 @@ ul  { list-style: none; }
 
 .dep-item {
   flex: 0 0 220px;
+  cursor: pointer;
   border-radius: var(--radius);
   box-shadow: var(--shadow-md);
   overflow: hidden;
@@ -803,7 +822,12 @@ ul  { list-style: none; }
 /* ============================================================
    CONTATO
    ============================================================ */
-.contato { background: var(--branco); }
+.contato {
+  background:
+    linear-gradient(rgba(255,255,255,0.91), rgba(255,255,255,0.91)),
+    url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80') center / cover no-repeat;
+  background-attachment: fixed, fixed;
+}
 
 .contato-grid {
   display: grid;
@@ -1039,3 +1063,71 @@ ul  { list-style: none; }
   .dep-item      { flex: 0 0 155px; }
   .produto-img-wrap { height: 180px; }
 }
+
+/* ── Desativar parallax em mobile/tablet (≤1023px) ── */
+@media (max-width: 1023px) {
+  .sobre, .produtos, .valores, .depoimentos, .contato {
+    background-attachment: scroll, scroll;
+  }
+}
+
+/* ============================================================
+   LIGHTBOX
+   ============================================================ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.9);
+}
+
+.lightbox-img {
+  position: relative;
+  z-index: 1;
+  max-height: 92vh;
+  max-width: 92vw;
+  width: auto;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(0,0,0,.6);
+  transform: scale(.88);
+  transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+  user-select: none;
+}
+
+.lightbox.open .lightbox-img {
+  transform: scale(1);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  z-index: 2;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  border: 1px solid rgba(255,255,255,.3);
+  color: var(--branco);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+  backdrop-filter: blur(4px);
+}
+.lightbox-close:hover { background: rgba(255,255,255,.28); }
