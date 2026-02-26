@@ -104,7 +104,10 @@ ul  { list-style: none; }
 
 .section-title em {
   font-style: italic;
-  color: var(--rosa-dark);
+  background: linear-gradient(135deg, var(--rosa-dark) 0%, var(--dourado) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .section-title.light { color: var(--branco); }
@@ -347,12 +350,33 @@ ul  { list-style: none; }
   width: 280px;
   max-width: 80vw;
   filter: drop-shadow(0 8px 32px rgba(201,163,101,.3));
-  animation: heroFloat 4s ease-in-out infinite;
+  animation: heroFloat 4s ease-in-out infinite, logoGlow 3s ease-in-out infinite alternate;
 }
 
 @keyframes heroFloat {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-10px); }
+}
+
+@keyframes logoGlow {
+  from { filter: drop-shadow(0 8px 24px rgba(201,163,101,.25)); }
+  to   { filter: drop-shadow(0 12px 40px rgba(201,163,101,.55)) drop-shadow(0 0 20px rgba(232,180,200,.35)); }
+}
+
+/* Partículas flutuantes no hero */
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: particleRise linear infinite;
+}
+
+@keyframes particleRise {
+  0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
+  10%  { opacity: .8; }
+  85%  { opacity: .5; }
+  100% { transform: translateY(-90vh) rotate(240deg) scale(0); opacity: 0; }
 }
 
 .hero-slogan {
@@ -567,7 +591,28 @@ ul  { list-style: none; }
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   transition: transform .3s ease, box-shadow .3s ease;
-  overflow: visible;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Shimmer sweep no hover */
+.produto-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -80%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+  transform: skewX(-15deg);
+  pointer-events: none;
+  opacity: 0;
+}
+.produto-card:hover::after {
+  opacity: 1;
+  animation: shimmerSweep .65s ease forwards;
+}
+@keyframes shimmerSweep {
+  0%   { left: -80%; }
+  100% { left: 160%; }
 }
 
 .produto-card:hover {
@@ -755,7 +800,12 @@ ul  { list-style: none; }
     url('img/depoimentos.jpg') center / cover no-repeat;
   background-attachment: fixed, fixed;
 }
-.depoimentos .section-title em { color: var(--rosa-dark); }
+.depoimentos .section-title em {
+  background: linear-gradient(135deg, var(--rosa-dark) 0%, var(--dourado) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
 .dep-carousel-wrapper {
   display: flex;
@@ -1203,6 +1253,76 @@ ul  { list-style: none; }
   .sobre-badges  { justify-content: center; }
   .dep-item      { flex: 0 0 155px; }
   .produto-img-wrap { height: 180px; }
+}
+
+/* ============================================================
+   EFEITOS GLOBAIS
+   ============================================================ */
+
+/* ── Barra de progresso do scroll ── */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--rosa), var(--dourado), var(--rosa-dark));
+  z-index: 9999;
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 10px rgba(201,163,101,.6);
+  transition: width .08s linear;
+  pointer-events: none;
+}
+
+/* ── Ripple nos botões ── */
+.btn-wpp, .btn-outline, .btn-vitrine-hero,
+.btn-wpp-grande, .btn-vitrine-header, .btn-vitrine-banner {
+  position: relative;
+}
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,.35);
+  transform: scale(0);
+  animation: rippleAnim .6s linear;
+  pointer-events: none;
+}
+@keyframes rippleAnim {
+  to { transform: scale(4); opacity: 0; }
+}
+
+/* ── Delays escalonados para cards ── */
+.produtos-grid .produto-card:nth-child(1) { transition-delay: .05s; }
+.produtos-grid .produto-card:nth-child(2) { transition-delay: .1s; }
+.produtos-grid .produto-card:nth-child(3) { transition-delay: .15s; }
+.produtos-grid .produto-card:nth-child(4) { transition-delay: .2s; }
+
+.produtos-grid .produto-card:nth-child(1).visible { animation: fadeSlideUp .6s .05s both; }
+.produtos-grid .produto-card:nth-child(2).visible { animation: fadeSlideUp .6s .15s both; }
+.produtos-grid .produto-card:nth-child(3).visible { animation: fadeSlideUp .6s .25s both; }
+.produtos-grid .produto-card:nth-child(4).visible { animation: fadeSlideUp .6s .35s both; }
+
+.valores-grid .valor-card:nth-child(1).visible { animation: fadeSlideUp .6s .05s both; }
+.valores-grid .valor-card:nth-child(2).visible { animation: fadeSlideUp .6s .2s both; }
+.valores-grid .valor-card:nth-child(3).visible { animation: fadeSlideUp .6s .35s both; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Brilho dourado nos badges (Sobre) ── */
+.badge {
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(201,163,101,.3);
+}
+
+/* ── Linha animada embaixo do título ── */
+.section-title {
+  position: relative;
+  display: inline-block;
 }
 
 /* ── Desativar parallax em mobile/tablet (≤1023px) ── */

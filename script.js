@@ -162,6 +162,99 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeLightbox();
 });
 
+/* ── BARRA DE PROGRESSO DO SCROLL ──────────────────────── */
+const progressBar = document.createElement('div');
+progressBar.className = 'scroll-progress';
+document.body.prepend(progressBar);
+
+window.addEventListener('scroll', () => {
+  const scrollTop  = window.pageYOffset;
+  const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = ((scrollTop / docHeight) * 100) + '%';
+}, { passive: true });
+
+/* ── PARTÍCULAS FLUTUANTES NO HERO ─────────────────────── */
+(function createParticles() {
+  const hero   = document.querySelector('.hero');
+  const colors = [
+    'rgba(232,180,200,.55)',
+    'rgba(201,163,101,.45)',
+    'rgba(253,232,239,.65)',
+    'rgba(194,129,154,.4)',
+    'rgba(180,165,220,.45)',
+  ];
+
+  for (let i = 0; i < 22; i++) {
+    const p   = document.createElement('div');
+    const size = Math.random() * 7 + 3;
+    p.className = 'hero-particle';
+    p.style.cssText = [
+      `left:${Math.random() * 100}%`,
+      `top:${Math.random() * 100}%`,
+      `width:${size}px`,
+      `height:${size}px`,
+      `background:${colors[Math.floor(Math.random() * colors.length)]}`,
+      `animation-delay:${(Math.random() * 8).toFixed(2)}s`,
+      `animation-duration:${(Math.random() * 7 + 6).toFixed(2)}s`,
+    ].join(';');
+    hero.appendChild(p);
+  }
+})();
+
+/* ── CONTADOR ANIMADO NOS BADGES (Sobre) ───────────────── */
+(function animateCounters() {
+  const badges = document.querySelectorAll('.badge-num');
+
+  const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el  = entry.target;
+      const raw = el.textContent.trim();
+
+      /* Extrai prefixo, número e sufixo — ex: "+15", "24h", "100%" */
+      const match = raw.match(/^([^0-9]*)(\d+)([^0-9]*)$/);
+      if (!match) return;
+      const [, prefix, numStr, suffix] = match;
+      const target = parseInt(numStr, 10);
+      let current  = 0;
+      const step   = Math.ceil(target / 40);
+
+      const tick = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = prefix + current + suffix;
+        if (current >= target) clearInterval(tick);
+      }, 28);
+
+      counterObserver.unobserve(el);
+    });
+  }, { threshold: 0.6 });
+
+  badges.forEach(b => counterObserver.observe(b));
+})();
+
+/* ── RIPPLE NOS BOTÕES ──────────────────────────────────── */
+(function addRipple() {
+  const selectors = [
+    '.btn-wpp', '.btn-outline', '.btn-vitrine-hero',
+    '.btn-wpp-grande', '.btn-vitrine-header', '.btn-vitrine-banner',
+  ];
+  document.querySelectorAll(selectors.join(',')).forEach(btn => {
+    btn.addEventListener('click', e => {
+      const rect   = btn.getBoundingClientRect();
+      const size   = Math.max(rect.width, rect.height);
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      ripple.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${e.clientX - rect.left - size / 2}px;
+        top:${e.clientY - rect.top  - size / 2}px;
+      `;
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 650);
+    });
+  });
+})();
+
 /* ── HEADER SCROLL ──────────────────────────────────────── */
 const header = document.getElementById('header');
 
