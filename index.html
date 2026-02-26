@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gica's Novidades — Escolhidos com carinho para você</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header id="header">
+    <div class="header-inner">
+      <a href="#inicio" class="logo-link">
+        <img src="logo.png" alt="Gica's Novidades" class="logo-header" />
+      </a>
+      <ul class="nav-desktop">
+        <li><a href="#inicio" class="nav-link">Início</a></li>
+        <li><a href="#sobre" class="nav-link">Sobre</a></li>
+        <li><a href="#produtos" class="nav-link">Produtos</a></li>
+        <li><a href="#valores" class="nav-link">Valores</a></li>
+        <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+        <li><a href="#contato" class="nav-link">Contato</a></li>
+      </ul>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== NAV MOBILE (irmão do header) ===== -->
+  <nav id="navMenu">
+    <button class="nav-close" id="navClose" aria-label="Fechar menu">
+      <i class="fas fa-times"></i>
+    </button>
+    <ul>
+      <li><a href="#inicio" class="nav-link">Início</a></li>
+      <li><a href="#sobre" class="nav-link">Sobre</a></li>
+      <li><a href="#produtos" class="nav-link">Produtos</a></li>
+      <li><a href="#valores" class="nav-link">Valores</a></li>
+      <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+      <li><a href="#contato" class="nav-link">Contato</a></li>
+    </ul>
+    <div class="nav-social">
+      <a href="https://www.instagram.com/gicasnovidades/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/gicasnovidades" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <!-- ===== HERO ===== -->
+  <section id="inicio" class="hero">
+    <div class="hero-blob hero-blob-1"></div>
+    <div class="hero-blob hero-blob-2"></div>
+    <div class="hero-blob hero-blob-3"></div>
+    <div class="hero-content">
+      <img src="logo.png" alt="Gica's Novidades" class="hero-logo" />
+      <p class="hero-slogan"><em>Escolhidos com carinho para você</em></p>
+      <p class="hero-desc">Loja online 24h com produtos selecionados com amor, direto para a sua porta</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/5519992083302" target="_blank" class="btn-wpp">
+          <i class="fab fa-whatsapp"></i> Fale no WhatsApp
+        </a>
+        <a href="#produtos" class="btn-outline">Ver produtos</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span></span>
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE ===== -->
+  <section id="sobre" class="section sobre">
+    <div class="container">
+      <div class="section-tag">Nossa História</div>
+      <h2 class="section-title">Feita de <em>garra</em> e amor</h2>
+      <div class="sobre-grid">
+        <div class="sobre-text reveal">
+          <p>A <strong>Gica's Novidades</strong> nasceu em 2009 da garra de uma mãe que buscava independência. O que começou com catálogos e doces consignados nos intervalos das indústrias, transformou-se em um negócio multisetorial sólido e cheio de vida.</p>
+          <p>Formalizada em 2013, hoje somos uma loja online disponível 24h, atendendo com agilidade e carinho clientes de Indaiatuba e região — e expandindo o alcance para todo o Brasil.</p>
+          <p>Cada produto é escolhido com cuidado, pensando no seu bem-estar e praticidade. Porque aqui, você não é apenas um cliente — é parte da nossa família.</p>
+          <div class="sobre-badges">
+            <div class="badge">
+              <span class="badge-num">+15</span>
+              <span class="badge-label">Anos de história</span>
+            </div>
+            <div class="badge">
+              <span class="badge-num">24h</span>
+              <span class="badge-label">Loja online</span>
+            </div>
+            <div class="badge">
+              <span class="badge-num">100%</span>
+              <span class="badge-label">Feito com amor</span>
+            </div>
+          </div>
+        </div>
+        <div class="sobre-card reveal">
+          <div class="sobre-card-inner">
+            <i class="fas fa-heart sobre-card-icon"></i>
+            <blockquote>
+              "Transformamos o sustento de uma família em uma estrutura que atende muitos clientes."
+            </blockquote>
+            <cite>— Gica's Novidades, desde 2009</cite>
+            <div class="sobre-card-deco"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUTOS ===== -->
+  <section id="produtos" class="section produtos">
+    <div class="container">
+      <div class="section-tag">O que oferecemos</div>
+      <h2 class="section-title">Nossos <em>Produtos</em></h2>
+      <p class="section-sub">Uma curadoria diversificada, escolhida com carinho para o seu dia a dia</p>
+      <div class="produtos-grid">
+
+        <div class="produto-card reveal">
+          <div class="produto-img-wrap">
+            <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=600&q=80" alt="Bombonieres e Bebidas Geladas" loading="lazy" />
+            <div class="produto-img-overlay">
+              <i class="fas fa-candy-cane"></i>
+            </div>
+          </div>
+          <div class="produto-body">
+            <h3>Bombonieres & Bebidas</h3>
+            <p>Chocolates, doces e bebidas geladas selecionados para adoçar seus momentos especiais.</p>
+            <a href="https://wa.me/5519992083302?text=Olá! Gostaria de saber mais sobre bombonieres e bebidas." target="_blank" class="btn-produto">
+              Pedir agora <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="produto-card reveal">
+          <div class="produto-img-wrap">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80" alt="Cosméticos" loading="lazy" />
+            <div class="produto-img-overlay">
+              <i class="fas fa-spa"></i>
+            </div>
+          </div>
+          <div class="produto-body">
+            <h3>Cosméticos</h3>
+            <p>Perfumes, cremes e produtos de beleza curados com qualidade e variedade para você se cuidar.</p>
+            <a href="https://wa.me/5519992083302?text=Olá! Gostaria de saber mais sobre cosméticos." target="_blank" class="btn-produto">
+              Pedir agora <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="produto-card reveal">
+          <div class="produto-img-wrap">
+            <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&q=80" alt="Cestas Personalizadas" loading="lazy" />
+            <div class="produto-img-overlay">
+              <i class="fas fa-gift"></i>
+            </div>
+          </div>
+          <div class="produto-body">
+            <h3>Cestas Personalizadas</h3>
+            <p>Monte sua cesta dos sonhos! Criamos composições únicas para cada ocasião e cada pessoa especial.</p>
+            <a href="https://wa.me/5519992083302?text=Olá! Gostaria de montar uma cesta personalizada." target="_blank" class="btn-produto">
+              Montar minha cesta <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="produto-card reveal">
+          <div class="produto-img-wrap">
+            <img src="https://images.unsplash.com/photo-1560243563-062bfc001d68?w=600&q=80" alt="Moda e Chinelos" loading="lazy" />
+            <div class="produto-img-overlay">
+              <i class="fas fa-shoe-prints"></i>
+            </div>
+          </div>
+          <div class="produto-body">
+            <h3>Moda & Chinelos</h3>
+            <p>Peças de moda e chinelos confortáveis para você arrasar no dia a dia com estilo e praticidade.</p>
+            <a href="https://wa.me/5519992083302?text=Olá! Gostaria de saber mais sobre moda e chinelos." target="_blank" class="btn-produto">
+              Pedir agora <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MISSÃO, VISÃO E VALORES ===== -->
+  <section id="valores" class="section valores">
+    <div class="container">
+      <div class="section-tag light">Nossa Essência</div>
+      <h2 class="section-title light">Missão, Visão <em>& Valores</em></h2>
+      <div class="valores-grid">
+
+        <div class="valor-card reveal">
+          <div class="valor-icon"><i class="fas fa-bullseye"></i></div>
+          <h3>Missão</h3>
+          <p>Oferecer praticidade e bem-estar através de uma curadoria diversificada de produtos, entregando confiança e agilidade na porta de casa.</p>
+        </div>
+
+        <div class="valor-card destaque reveal">
+          <div class="valor-icon"><i class="fas fa-eye"></i></div>
+          <h3>Visão</h3>
+          <p>Ser a principal referência em conveniência multicanal de Indaiatuba e região, expandindo o alcance nacional com afeto e qualidade.</p>
+        </div>
+
+        <div class="valor-card reveal">
+          <div class="valor-icon"><i class="fas fa-star"></i></div>
+          <h3>Valores</h3>
+          <ul class="valores-lista">
+            <li><i class="fas fa-check"></i> Honestidade — base desde 2013</li>
+            <li><i class="fas fa-check"></i> Compromisso com a Família</li>
+            <li><i class="fas fa-check"></i> Qualidade Curada</li>
+            <li><i class="fas fa-check"></i> Proximidade com o Cliente</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEPOIMENTOS ===== -->
+  <section id="depoimentos" class="section depoimentos">
+    <div class="container">
+      <div class="section-tag">O que dizem sobre nós</div>
+      <h2 class="section-title">Clientes <em>felizes</em></h2>
+      <p class="section-sub">Conversas reais, carinho de verdade</p>
+      <div class="dep-carousel-wrapper">
+        <button class="dep-btn dep-prev" id="depPrev" aria-label="Anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="dep-track-outer" id="depTrackOuter">
+          <div class="dep-track" id="depTrack"></div>
+        </div>
+        <button class="dep-btn dep-next" id="depNext" aria-label="Próximo">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section id="contato" class="section contato">
+    <div class="container">
+      <div class="section-tag">Fale conosco</div>
+      <h2 class="section-title">Vamos <em>conversar?</em></h2>
+      <p class="section-sub">Estamos prontos para te atender com carinho e agilidade</p>
+
+      <div class="contato-grid">
+
+        <div class="contato-info reveal">
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-clock"></i></div>
+            <div class="info-text">
+              <strong>Horário de Atendimento</strong>
+              <p>Loja Online: 24h por dia</p>
+              <p>WhatsApp: Seg–Sex 09h às 18h</p>
+              <p>Sábado: 09h às 13h</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="info-text">
+              <strong>Endereço</strong>
+              <p>Rua Professora Sinézia Martini, 256</p>
+              <p>Indaiatuba – SP</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-envelope"></i></div>
+            <div class="info-text">
+              <strong>E-mail</strong>
+              <p>gicandrade.pc@gmail.com</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fas fa-phone"></i></div>
+            <div class="info-text">
+              <strong>Telefone / WhatsApp</strong>
+              <p>(19) 99208-3302</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contato-cta reveal">
+          <div class="cta-card">
+            <img src="logo.png" alt="Gica's Novidades" class="cta-logo" />
+            <p>Entre em contato agora e receba atendimento personalizado com muito carinho!</p>
+            <a href="https://wa.me/5519992083302" target="_blank" class="btn-wpp-grande">
+              <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+            </a>
+            <div class="redes-sociais">
+              <a href="https://www.instagram.com/gicasnovidades/" target="_blank" class="rede-link instagram" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://www.facebook.com/gicasnovidades" target="_blank" class="rede-link facebook" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <img src="logo.png" alt="Gica's Novidades" class="footer-logo" />
+      <p>CNPJ: 18.175.396/0001-73</p>
+      <p>Rua Professora Sinézia Martini, 256 — Indaiatuba, SP</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/gicasnovidades/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/gicasnovidades" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      </div>
+      <p class="footer-copy">© 2025 Gica's Novidades. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ===== BOTÃO FLUTUANTE WHATSAPP ===== -->
+  <a href="https://wa.me/5519992083302" target="_blank" class="wpp-float" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
